@@ -1,0 +1,41 @@
+<h2>Agregar Producto</h2>
+
+<form (ngSubmit)="agregarProducto()">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="nuevoProducto.nombre" name="nombre" required>
+
+  <label>Precio:</label>
+  <input type="number" [(ngModel)]="nuevoProducto.precio" name="precio" required>
+
+  <label>Stock:</label>
+  <input type="number" [(ngModel)]="nuevoProducto.stock" name="stock" required>
+
+  <button type="submit">Guardar</button>
+</form>
+
+<hr>
+
+<h2>Lista de Productos</h2>
+
+<table *ngIf="productos.length > 0; else sinDatos" border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of productos">
+      <td>{{ p.id }}</td>
+      <td>{{ p.nombre }}</td>
+      <td>{{ p.precio }}</td>
+      <td>{{ p.stock }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #sinDatos>
+  <p>No hay productos registrados.</p>
+</ng-template>
